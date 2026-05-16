@@ -696,7 +696,7 @@ class Pipe:
         if __tools__ and model_family in FEATURE_SUPPORT["function_calling"]:
             responses_body.tools = ResponsesBody.transform_tools(
                 tools=__tools__,
-                strict=True,
+                strict=False,
             )
 
         # Add web_search tool only if supported, enabled, and effort != minimal
