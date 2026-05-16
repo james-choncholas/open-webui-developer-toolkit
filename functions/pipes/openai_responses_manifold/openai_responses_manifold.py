@@ -723,6 +723,9 @@ class Pipe:
         # If so, update the OpenWebUI model parameter to enable native function calling for future requests.
         if __tools__:
             model = Models.get_model_by_id(openwebui_model_id)
+            if inspect.iscoroutine(model):
+                model = await model
+
             if model:
                 params = dict(model.params or {})
                 if params.get("function_calling") != "native":
